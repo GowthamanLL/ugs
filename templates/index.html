@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Data Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            position: fixed;
+        }
+        .sidebar h2 {
+            color: #df0050;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a, .sidebar button {
+            background: none;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+        .sidebar ul li a:hover, .sidebar button:hover {
+            color: #00c9d3;
+        }
+        .container {
+            margin-left: 270px;
+            padding: 20px;
+            width: calc(100% - 270px);
+        }
+        .form-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: none;
+        }
+        h2 {
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            display: none;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Main Menu</h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li>
+                <button class="expandable" onclick="toggleSubMenu('pollutionSubMenu')">Pollution Analysis ▼</button>
+                <ul class="sub-sidebar" id="pollutionSubMenu">
+                    <li><button onclick="showSection('uploadSection')">Upload Data</button></li>
+                    <li><button onclick="showSection('visualizationSection')">Visualize AQI</button></li>
+                    <li><button onclick="showSection('predictionSection')">Predict AQI</button></li>
+                    <li><button onclick="showSection('heatmapSection')">Generate Heatmap</button></li>
+                </ul>
+            </li>
+            <li><a href="#">Forecasting</a></li>
+            <li>
+                <button class="expandable" onclick="toggleSubMenu('clusterSubMenu')">Cluster Analysis ▼</button>
+                <ul class="sub-sidebar" id="clusterSubMenu">
+                    <li><button onclick="showSection('clusterMapSection')">Cluster Map</button></li>
+                    <li><button onclick="showSection('highRiskSection')">High-Risk Areas</button></li>
+                    <li><button onclick="showSection('boxPlotSection')">Box Plot</button></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>AQI Data Upload & Visualization Dashboard</h1>
+        </header>
+
+        <div id="uploadSection" class="form-section">
+            <h2>Upload AQI Data</h2>
+            <form id="uploadForm">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+            <div id="uploadMessage"></div>
+        </div>
+
+        <div id="visualizationSection" class="form-section">
+            <h2>Generate AQI Visualization</h2>
+            <form action="/all_aqi_visualization" method="GET">
+                <button type="submit">All AQI Categories</button>
+            </form>
+            <form action="/high_pollution_visualization" method="GET">
+                <button type="submit">High Pollution Areas</button>
+            </form>
+            <div id="errorMessage"></div>
+        </div>
+
+        <div id="predictionSection" class="form-section">
+            <h2>Predict AQI Category</h2>
+            <button onclick="predictAQI()">Predict AQI</button>
+        </div>
+
+        <div id="heatmapSection" class="form-section">
+            <h2>Heatmap Visualization</h2>
+            <button onclick="generateHeatmap()">Generate Heatmap</button>
+            <div class="iframe-container" id="heatmapContainer">
+                <iframe id="heatmapFrame"></iframe>
+            </div>
+            <br>
+            <button id="downloadButton" onclick="downloadHeatmap()">Download Heatmap Data</button>
+        </div>
+
+        <div id="clusterMapSection" class="form-section">
+            <h2>Cluster Map Visualization</h2>
+            <button onclick="loadClusterMap()">View Cluster Map</button>
+        </div>
+
+        <div id="highRiskSection" class="form-section">
+            <h2>High-Risk Areas Analysis</h2>
+            <button onclick="loadHighRiskAreas()">Analyze High-Risk Areas</button>
+        </div>
+
+        <div id="boxPlotSection" class="form-section">
+            <h2>Box Plot for Clustered Data</h2>
+            <button onclick="loadBoxPlot()">Generate Box Plot</button>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleSubMenu() {
+            const subMenu = document.getElementById('pollutionSubMenu');
+            subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function generateHeatmap() {
+            const iframe = document.getElementById('heatmapFrame');
+            iframe.src = "/heatmap_visualization"; 
+            document.getElementById('heatmapContainer').style.display = 'block';
+        }
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/upload_aqi_data', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageBox = document.getElementById('uploadMessage');
+                messageBox.textContent = data.message;
+                messageBox.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                displayError('Failed to upload file.');
+            });
+        });
+
+        function predictAQI() {
+            const data = {
+                values: [[60, 90, 40, 12, 1.2, 30]]
+            };
+
+            fetch('/predict_aqi', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => alert('Predicted AQI Category: ' + result['Predicted AQI Category']))
+            .catch(error => displayError('Error predicting AQI: ' + error));
+        }
+        
+        function downloadHeatmap() {
+            const link = document.createElement('a');
+            link.href = "/static/high_pollution_heatmap.html";  // Ensure the file is stored in static
+            link.download = "high_pollution_heatmap.html";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function displayError(message) {
+            const errorBox = document.getElementById('errorMessage');
+            errorBox.textContent = message;
+            errorBox.style.display = 'block';
+        }
+        function loadClusterMap() {
+            window.location.href = "/cluster_map";
+        }
+
+        function loadHighRiskAreas() {
+            window.location.href = "/high_risk_areas";
+        }
+
+        function loadBoxPlot() {
+            window.location.href = "/box_plot";
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
