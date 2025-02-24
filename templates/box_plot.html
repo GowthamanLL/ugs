@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Plot - AQI Clusters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        img {
+            width: 80%;
+            max-width: 800px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Box Plot - AQI Levels in Different Pollution Clusters</h2>
+
+    <!-- Display the Box Plot -->
+    <img src="{{ url_for('static', filename='box_plot.png') }}" alt="Box Plot">
+
+    <br><br>
+
+    <!-- Button to Regenerate the Box Plot -->
+    <button onclick="window.location.href='/box_plot'">Generate New Box Plot</button>
+
+    <br><br>
+
+    <!-- Button to Download the Box Plot -->
+    <a href="{{ url_for('static', filename='box_plot.png') }}" download>
+        <button>Download Box Plot</button>
+    </a>
+
+    <br><br>
+    <button onclick="window.location.href='/'">Go Back</button>
+</body>
+</html>

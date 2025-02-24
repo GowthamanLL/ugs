@@ -104,6 +104,7 @@
             <li>
                 <button class="expandable" onclick="toggleSubMenu('clusterSubMenu')">Cluster Analysis ▼</button>
                 <ul class="sub-sidebar" id="clusterSubMenu">
+                    <li><button onclick="showSection('clusterUploadSection')">Upload Data</button></li>
                     <li><button onclick="showSection('clusterMapSection')">Cluster Map</button></li>
                     <li><button onclick="showSection('highRiskSection')">High-Risk Areas</button></li>
                     <li><button onclick="showSection('boxPlotSection')">Box Plot</button></li>
@@ -126,6 +127,15 @@
             <div id="uploadMessage"></div>
         </div>
 
+        <div id="clusterUploadSection" class="form-section">
+            <h2>Upload Cluster Analysis Data</h2>
+            <form id="clusterUploadForm">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+            <div id="clusterUploadMessage"></div>
+        </div>
+        
         <div id="visualizationSection" class="form-section">
             <h2>Generate AQI Visualization</h2>
             <form action="/all_aqi_visualization" method="GET">
@@ -155,7 +165,12 @@
         <div id="clusterMapSection" class="form-section">
             <h2>Cluster Map Visualization</h2>
             <button onclick="loadClusterMap()">View Cluster Map</button>
+            <br>
+            <a href="{{ url_for('download_cluster_map') }}" download>
+                <button>Download Cluster Map</button>
+            </a>
         </div>
+
 
         <div id="highRiskSection" class="form-section">
             <h2>High-Risk Areas Analysis</h2>

@@ -65,6 +65,7 @@ def cluster_analysis():
 @app.route('/cluster_map')
 def cluster_map():
     global df
+    df = process_data("C:\\Users\\Gokulnath\\Desktop\\flask\\uploaded_files\\coimbatore_pollution_no_aqi1.csv")
     if df is None:
         return "No data uploaded. Please upload a dataset first."
     
@@ -182,6 +183,8 @@ def all_aqi_visualization():
     try:
         latest_file = max([os.path.join(UPLOAD_FOLDER, f) for f in os.listdir(UPLOAD_FOLDER)], key=os.path.getctime)
         df = pd.read_csv(latest_file)
+        print("Available columns:", df.columns)
+        print(df.head())  # Debugging: Check if 'AQI (Index)' exists and has valid values
 
         if 'AQI_Category' not in df:
             df = process_aqi_categories(df)
@@ -256,6 +259,17 @@ def heatmap_visualization():
 @app.route('/download_heatmap')
 def download_heatmap():
     return send_from_directory(directory="static", path="high_pollution_heatmap.html", as_attachment=True)
+
+from flask import send_from_directory
+
+@app.route('/download_cluster_map')
+def download_cluster_map():
+    return send_from_directory(directory="static", path="cluster_map.html", as_attachment=True)
+
+@app.route('/download_high_risk')
+def download_high_risk():
+    return send_from_directory(directory="static", path="high_risk_areas.html", as_attachment=True)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

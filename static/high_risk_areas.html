@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c84e9c9c2e6ff5f672846862f3693da4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c84e9c9c2e6ff5f672846862f3693da4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c84e9c9c2e6ff5f672846862f3693da4 = L.map(
+                "map_c84e9c9c2e6ff5f672846862f3693da4",
+                {
+                    center: [11.026989563965518, 77.00626094758621],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4a572c732b1ef3ea8f577f2db5163b0d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4a572c732b1ef3ea8f577f2db5163b0d.addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var marker_abb665ce134eb4c530c5fe2ae853aca1 = L.marker(
+                [10.97047783, 76.97834196],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_0951a572d8a5803454aff183b0cfb45a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_abb665ce134eb4c530c5fe2ae853aca1.setIcon(icon_0951a572d8a5803454aff183b0cfb45a);
+        
+    
+        var popup_55a99193e734d1c7677011292c52533f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a66ac7e07314e39d8ddbf8ed6e76f259 = $(`<div id="html_a66ac7e07314e39d8ddbf8ed6e76f259" style="width: 100.0%; height: 100.0%;">AQI: 289.7586206896552 | Risk: High Risk</div>`)[0];
+                popup_55a99193e734d1c7677011292c52533f.setContent(html_a66ac7e07314e39d8ddbf8ed6e76f259);
+            
+        
+
+        marker_abb665ce134eb4c530c5fe2ae853aca1.bindPopup(popup_55a99193e734d1c7677011292c52533f)
+        ;
+
+        
+    
+    
+            var marker_a98d7e63699703715b3f0923f5463a71 = L.marker(
+                [11.0214, 76.9476],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_8188be658fbc96629979b55782e04d4e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_a98d7e63699703715b3f0923f5463a71.setIcon(icon_8188be658fbc96629979b55782e04d4e);
+        
+    
+        var popup_95d18254f6e72c593cb6a57594a6ff69 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b680f92da0c44e5e370ff2c54f6b1791 = $(`<div id="html_b680f92da0c44e5e370ff2c54f6b1791" style="width: 100.0%; height: 100.0%;">AQI: 307.90697674418607 | Risk: Critical Risk</div>`)[0];
+                popup_95d18254f6e72c593cb6a57594a6ff69.setContent(html_b680f92da0c44e5e370ff2c54f6b1791);
+            
+        
+
+        marker_a98d7e63699703715b3f0923f5463a71.bindPopup(popup_95d18254f6e72c593cb6a57594a6ff69)
+        ;
+
+        
+    
+    
+            var marker_28281832f1360b8a82bdb58c922107e7 = L.marker(
+                [11.12915572, 77.06851404],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_2e996af2730a719f6917b4a82f144f9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_28281832f1360b8a82bdb58c922107e7.setIcon(icon_2e996af2730a719f6917b4a82f144f9a);
+        
+    
+        var popup_4caf4cfdbb3afcb882fdc7b8e2d7793b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69da32a59a7e179f0ebbe4cf5a7d4ad5 = $(`<div id="html_69da32a59a7e179f0ebbe4cf5a7d4ad5" style="width: 100.0%; height: 100.0%;">AQI: 318.6511627906977 | Risk: Critical Risk</div>`)[0];
+                popup_4caf4cfdbb3afcb882fdc7b8e2d7793b.setContent(html_69da32a59a7e179f0ebbe4cf5a7d4ad5);
+            
+        
+
+        marker_28281832f1360b8a82bdb58c922107e7.bindPopup(popup_4caf4cfdbb3afcb882fdc7b8e2d7793b)
+        ;
+
+        
+    
+    
+            var marker_8feacae9d8f509927d51740e0a6b0f65 = L.marker(
+                [11.01785897, 76.90482579],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_69a63d983a6903e5ec7cae4fe51f65f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8feacae9d8f509927d51740e0a6b0f65.setIcon(icon_69a63d983a6903e5ec7cae4fe51f65f7);
+        
+    
+        var popup_6a3297bff86c12d4ecd260a287252ccb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ea4512a430d94c28bbe5ba4c1bdb28b0 = $(`<div id="html_ea4512a430d94c28bbe5ba4c1bdb28b0" style="width: 100.0%; height: 100.0%;">AQI: 305.6046511627907 | Risk: Critical Risk</div>`)[0];
+                popup_6a3297bff86c12d4ecd260a287252ccb.setContent(html_ea4512a430d94c28bbe5ba4c1bdb28b0);
+            
+        
+
+        marker_8feacae9d8f509927d51740e0a6b0f65.bindPopup(popup_6a3297bff86c12d4ecd260a287252ccb)
+        ;
+
+        
+    
+    
+            var marker_ca741dc4ce71d88f34c287d25178e4a3 = L.marker(
+                [11.09237115, 76.91136613],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_18c1bda2fba0fc1cfddcf8cf6454c48f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ca741dc4ce71d88f34c287d25178e4a3.setIcon(icon_18c1bda2fba0fc1cfddcf8cf6454c48f);
+        
+    
+        var popup_38efdfd5579adaf74837714d14de21bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3bc1c569d262a625c8d580f23a5fd660 = $(`<div id="html_3bc1c569d262a625c8d580f23a5fd660" style="width: 100.0%; height: 100.0%;">AQI: 221.48275862068965 | Risk: High Risk</div>`)[0];
+                popup_38efdfd5579adaf74837714d14de21bd.setContent(html_3bc1c569d262a625c8d580f23a5fd660);
+            
+        
+
+        marker_ca741dc4ce71d88f34c287d25178e4a3.bindPopup(popup_38efdfd5579adaf74837714d14de21bd)
+        ;
+
+        
+    
+    
+            var marker_84086d18d4a1e6347d3f9a31287bcefc = L.marker(
+                [11.08962331, 77.03977711],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_67be00262a161e6bfeef7a43c31b05a0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_84086d18d4a1e6347d3f9a31287bcefc.setIcon(icon_67be00262a161e6bfeef7a43c31b05a0);
+        
+    
+        var popup_f7d0ed91e0daf9f960dc9b69512aef49 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d7400d924c16562d26602c7b3b2e7e6 = $(`<div id="html_4d7400d924c16562d26602c7b3b2e7e6" style="width: 100.0%; height: 100.0%;">AQI: 318.6511627906977 | Risk: Critical Risk</div>`)[0];
+                popup_f7d0ed91e0daf9f960dc9b69512aef49.setContent(html_4d7400d924c16562d26602c7b3b2e7e6);
+            
+        
+
+        marker_84086d18d4a1e6347d3f9a31287bcefc.bindPopup(popup_f7d0ed91e0daf9f960dc9b69512aef49)
+        ;
+
+        
+    
+    
+            var marker_77fc1d61e896fcfe780d5b960f3b84a8 = L.marker(
+                [11.00028121, 76.9293638],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_8c05f07e6a6bda13e837d2127cefe836 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_77fc1d61e896fcfe780d5b960f3b84a8.setIcon(icon_8c05f07e6a6bda13e837d2127cefe836);
+        
+    
+        var popup_16a470854f5624feb666ac4e7f12e262 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_880d85f0f53674cf357f4d6dd080970b = $(`<div id="html_880d85f0f53674cf357f4d6dd080970b" style="width: 100.0%; height: 100.0%;">AQI: 305.6046511627907 | Risk: Critical Risk</div>`)[0];
+                popup_16a470854f5624feb666ac4e7f12e262.setContent(html_880d85f0f53674cf357f4d6dd080970b);
+            
+        
+
+        marker_77fc1d61e896fcfe780d5b960f3b84a8.bindPopup(popup_16a470854f5624feb666ac4e7f12e262)
+        ;
+
+        
+    
+    
+            var marker_eaf6343b5499dbbfc104a3fade162c81 = L.marker(
+                [10.97582247, 76.93476617],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_c9fe01aa5253f120a30c800ce7ff56b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_eaf6343b5499dbbfc104a3fade162c81.setIcon(icon_c9fe01aa5253f120a30c800ce7ff56b5);
+        
+    
+        var popup_ad7e1ad61508ac8f764fefb049a6f3b2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_276d6bf742d2fa517af4358c0f34ec7e = $(`<div id="html_276d6bf742d2fa517af4358c0f34ec7e" style="width: 100.0%; height: 100.0%;">AQI: 204.41379310344828 | Risk: High Risk</div>`)[0];
+                popup_ad7e1ad61508ac8f764fefb049a6f3b2.setContent(html_276d6bf742d2fa517af4358c0f34ec7e);
+            
+        
+
+        marker_eaf6343b5499dbbfc104a3fade162c81.bindPopup(popup_ad7e1ad61508ac8f764fefb049a6f3b2)
+        ;
+
+        
+    
+    
+            var marker_257fe97f668fb88e752f01549c364546 = L.marker(
+                [10.9462645, 77.06013828],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_b8e1ed40222a40937b4c13873dfb0e8e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_257fe97f668fb88e752f01549c364546.setIcon(icon_b8e1ed40222a40937b4c13873dfb0e8e);
+        
+    
+        var popup_9e1d45691c84225e81b4501891e502d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a59acec06d0dd05b1d14491eae7047c9 = $(`<div id="html_a59acec06d0dd05b1d14491eae7047c9" style="width: 100.0%; height: 100.0%;">AQI: 305.6046511627907 | Risk: Critical Risk</div>`)[0];
+                popup_9e1d45691c84225e81b4501891e502d3.setContent(html_a59acec06d0dd05b1d14491eae7047c9);
+            
+        
+
+        marker_257fe97f668fb88e752f01549c364546.bindPopup(popup_9e1d45691c84225e81b4501891e502d3)
+        ;
+
+        
+    
+    
+            var marker_484ce88778f082638b8180f3954b0285 = L.marker(
+                [10.9901, 76.9552],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_eca90231fe4a63d476f48775bed73073 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_484ce88778f082638b8180f3954b0285.setIcon(icon_eca90231fe4a63d476f48775bed73073);
+        
+    
+        var popup_b28b62bb0892387404c86aafa13adee9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e6595d981113c9722bea5ef7e26a07b = $(`<div id="html_2e6595d981113c9722bea5ef7e26a07b" style="width: 100.0%; height: 100.0%;">AQI: 265.8620689655172 | Risk: High Risk</div>`)[0];
+                popup_b28b62bb0892387404c86aafa13adee9.setContent(html_2e6595d981113c9722bea5ef7e26a07b);
+            
+        
+
+        marker_484ce88778f082638b8180f3954b0285.bindPopup(popup_b28b62bb0892387404c86aafa13adee9)
+        ;
+
+        
+    
+    
+            var marker_b461c7922e6cd5dbfd8384f8b4de5e2b = L.marker(
+                [10.93712919, 77.05105618],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_469f281c852e577e199a7478fcb40de0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b461c7922e6cd5dbfd8384f8b4de5e2b.setIcon(icon_469f281c852e577e199a7478fcb40de0);
+        
+    
+        var popup_f37241c7145ff571b247a5348f0e2310 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3491d4a1b66e47bc6b87bdfd8a45acad = $(`<div id="html_3491d4a1b66e47bc6b87bdfd8a45acad" style="width: 100.0%; height: 100.0%;">AQI: 304.06976744186045 | Risk: Critical Risk</div>`)[0];
+                popup_f37241c7145ff571b247a5348f0e2310.setContent(html_3491d4a1b66e47bc6b87bdfd8a45acad);
+            
+        
+
+        marker_b461c7922e6cd5dbfd8384f8b4de5e2b.bindPopup(popup_f37241c7145ff571b247a5348f0e2310)
+        ;
+
+        
+    
+    
+            var marker_068ed539a21d37aacfb608c6a3be8099 = L.marker(
+                [10.93214852, 77.05867916],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_0953efff7b8c5bafd1d13738e1a8fc36 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_068ed539a21d37aacfb608c6a3be8099.setIcon(icon_0953efff7b8c5bafd1d13738e1a8fc36);
+        
+    
+        var popup_9ca26038b61f5afdcea355251d9bdd27 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d59532d37662bcbe3f2b85a8f893968 = $(`<div id="html_5d59532d37662bcbe3f2b85a8f893968" style="width: 100.0%; height: 100.0%;">AQI: 311.74418604651163 | Risk: Critical Risk</div>`)[0];
+                popup_9ca26038b61f5afdcea355251d9bdd27.setContent(html_5d59532d37662bcbe3f2b85a8f893968);
+            
+        
+
+        marker_068ed539a21d37aacfb608c6a3be8099.bindPopup(popup_9ca26038b61f5afdcea355251d9bdd27)
+        ;
+
+        
+    
+    
+            var marker_736abdd6a7605ad239be9f7c90894241 = L.marker(
+                [11.02270449, 77.07576417],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_7f1ef01cb2f629fe8f5f69672c712f37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_736abdd6a7605ad239be9f7c90894241.setIcon(icon_7f1ef01cb2f629fe8f5f69672c712f37);
+        
+    
+        var popup_97669c0ff33d4c8c4757797060648569 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d7e2247ba4f4b27ceac72e6fd3753906 = $(`<div id="html_d7e2247ba4f4b27ceac72e6fd3753906" style="width: 100.0%; height: 100.0%;">AQI: 323.2558139534884 | Risk: Critical Risk</div>`)[0];
+                popup_97669c0ff33d4c8c4757797060648569.setContent(html_d7e2247ba4f4b27ceac72e6fd3753906);
+            
+        
+
+        marker_736abdd6a7605ad239be9f7c90894241.bindPopup(popup_97669c0ff33d4c8c4757797060648569)
+        ;
+
+        
+    
+    
+            var marker_07a5e4429a1db58d6f7ef754285f9474 = L.marker(
+                [11.03405432, 76.99771298],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_995429106bb7f55b6cb176ba34fe14cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_07a5e4429a1db58d6f7ef754285f9474.setIcon(icon_995429106bb7f55b6cb176ba34fe14cd);
+        
+    
+        var popup_99ca4d4dfd67e1bd9dbb2ac1eb9c1226 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3cc26a0202697bed353fd3d1344f5f3 = $(`<div id="html_f3cc26a0202697bed353fd3d1344f5f3" style="width: 100.0%; height: 100.0%;">AQI: 235.1379310344828 | Risk: High Risk</div>`)[0];
+                popup_99ca4d4dfd67e1bd9dbb2ac1eb9c1226.setContent(html_f3cc26a0202697bed353fd3d1344f5f3);
+            
+        
+
+        marker_07a5e4429a1db58d6f7ef754285f9474.bindPopup(popup_99ca4d4dfd67e1bd9dbb2ac1eb9c1226)
+        ;
+
+        
+    
+    
+            var marker_04866976c3ba49b406cb21f7e7bad1c1 = L.marker(
+                [11.01189873, 77.00453633],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_9041763d39c84bf4a821be752c2f44d4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_04866976c3ba49b406cb21f7e7bad1c1.setIcon(icon_9041763d39c84bf4a821be752c2f44d4);
+        
+    
+        var popup_3ab5a0c5f7505b05b3e209ba0d9c73de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_91f75c9e8c03f4717b464451e606cb9e = $(`<div id="html_91f75c9e8c03f4717b464451e606cb9e" style="width: 100.0%; height: 100.0%;">AQI: 311.74418604651163 | Risk: Critical Risk</div>`)[0];
+                popup_3ab5a0c5f7505b05b3e209ba0d9c73de.setContent(html_91f75c9e8c03f4717b464451e606cb9e);
+            
+        
+
+        marker_04866976c3ba49b406cb21f7e7bad1c1.bindPopup(popup_3ab5a0c5f7505b05b3e209ba0d9c73de)
+        ;
+
+        
+    
+    
+            var marker_d959c4d9f78d0814c4215ae26ee162c5 = L.marker(
+                [11.16693296, 76.9261427],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_29538729e4f8a229e6237f674395b18e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d959c4d9f78d0814c4215ae26ee162c5.setIcon(icon_29538729e4f8a229e6237f674395b18e);
+        
+    
+        var popup_2b9ea610cbe1d4d99b987266b88538f2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_469a0f74765105e81e54641a54215f1b = $(`<div id="html_469a0f74765105e81e54641a54215f1b" style="width: 100.0%; height: 100.0%;">AQI: 311.74418604651163 | Risk: Critical Risk</div>`)[0];
+                popup_2b9ea610cbe1d4d99b987266b88538f2.setContent(html_469a0f74765105e81e54641a54215f1b);
+            
+        
+
+        marker_d959c4d9f78d0814c4215ae26ee162c5.bindPopup(popup_2b9ea610cbe1d4d99b987266b88538f2)
+        ;
+
+        
+    
+    
+            var marker_f46b309eaaa3d9bf7b27a83225485752 = L.marker(
+                [10.92782664, 77.06300129],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_0a728bb240c74a596740f937eedfe76f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f46b309eaaa3d9bf7b27a83225485752.setIcon(icon_0a728bb240c74a596740f937eedfe76f);
+        
+    
+        var popup_112f4b8380f4fe0ee9ecde783a206662 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee0d219cf89a705e1f0210d027def564 = $(`<div id="html_ee0d219cf89a705e1f0210d027def564" style="width: 100.0%; height: 100.0%;">AQI: 307.90697674418607 | Risk: Critical Risk</div>`)[0];
+                popup_112f4b8380f4fe0ee9ecde783a206662.setContent(html_ee0d219cf89a705e1f0210d027def564);
+            
+        
+
+        marker_f46b309eaaa3d9bf7b27a83225485752.bindPopup(popup_112f4b8380f4fe0ee9ecde783a206662)
+        ;
+
+        
+    
+    
+            var marker_a4cd138fa39674e65148a6d85b0b7f17 = L.marker(
+                [10.96497635, 76.9670056],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_850477a194a3abedc651d4f369099ac0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_a4cd138fa39674e65148a6d85b0b7f17.setIcon(icon_850477a194a3abedc651d4f369099ac0);
+        
+    
+        var popup_7185a8a152f0e47558235fc09a62638f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9613f5a4a1bf204a973179c06b6ca7d8 = $(`<div id="html_9613f5a4a1bf204a973179c06b6ca7d8" style="width: 100.0%; height: 100.0%;">AQI: 310.9767441860465 | Risk: Critical Risk</div>`)[0];
+                popup_7185a8a152f0e47558235fc09a62638f.setContent(html_9613f5a4a1bf204a973179c06b6ca7d8);
+            
+        
+
+        marker_a4cd138fa39674e65148a6d85b0b7f17.bindPopup(popup_7185a8a152f0e47558235fc09a62638f)
+        ;
+
+        
+    
+    
+            var marker_2383b849514f57e6466ed8af4d1ffc54 = L.marker(
+                [11.04854574, 76.99570259],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_dd7c4a6bcf3fd4d454d66a9e392150b4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_2383b849514f57e6466ed8af4d1ffc54.setIcon(icon_dd7c4a6bcf3fd4d454d66a9e392150b4);
+        
+    
+        var popup_30b6388d9f4d9136295bcd3745b2528c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3a45e1f1c90fc86a696145a1b57708a0 = $(`<div id="html_3a45e1f1c90fc86a696145a1b57708a0" style="width: 100.0%; height: 100.0%;">AQI: 211.24137931034485 | Risk: High Risk</div>`)[0];
+                popup_30b6388d9f4d9136295bcd3745b2528c.setContent(html_3a45e1f1c90fc86a696145a1b57708a0);
+            
+        
+
+        marker_2383b849514f57e6466ed8af4d1ffc54.bindPopup(popup_30b6388d9f4d9136295bcd3745b2528c)
+        ;
+
+        
+    
+    
+            var marker_1a22c3f7445852573ef2570cfcd465aa = L.marker(
+                [11.18146515, 77.00391906],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_7436483d7d1de1e8bc076c7985c11604 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1a22c3f7445852573ef2570cfcd465aa.setIcon(icon_7436483d7d1de1e8bc076c7985c11604);
+        
+    
+        var popup_8759d0936f88206c140696e95cd0d24a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ebc5f9cca5893200b88f310b87ef0dfe = $(`<div id="html_ebc5f9cca5893200b88f310b87ef0dfe" style="width: 100.0%; height: 100.0%;">AQI: 312.51162790697674 | Risk: Critical Risk</div>`)[0];
+                popup_8759d0936f88206c140696e95cd0d24a.setContent(html_ebc5f9cca5893200b88f310b87ef0dfe);
+            
+        
+
+        marker_1a22c3f7445852573ef2570cfcd465aa.bindPopup(popup_8759d0936f88206c140696e95cd0d24a)
+        ;
+
+        
+    
+    
+            var marker_bf6c6bbc919ca31c10cc37c1e9b96bc7 = L.marker(
+                [11.18009285, 77.01774117],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_32716122f6c4404fb1966a86b999ddea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_bf6c6bbc919ca31c10cc37c1e9b96bc7.setIcon(icon_32716122f6c4404fb1966a86b999ddea);
+        
+    
+        var popup_c929ca01cb710ed28e936f818d47b819 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6cb11479aaca2b1bf76741971d158fd9 = $(`<div id="html_6cb11479aaca2b1bf76741971d158fd9" style="width: 100.0%; height: 100.0%;">AQI: 204.41379310344828 | Risk: High Risk</div>`)[0];
+                popup_c929ca01cb710ed28e936f818d47b819.setContent(html_6cb11479aaca2b1bf76741971d158fd9);
+            
+        
+
+        marker_bf6c6bbc919ca31c10cc37c1e9b96bc7.bindPopup(popup_c929ca01cb710ed28e936f818d47b819)
+        ;
+
+        
+    
+    
+            var marker_51ce34ff441b6a0d89d6cb489eb28d3f = L.marker(
+                [11.1046394, 76.92580241],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_435756239e3a919ec30fb3744a9f622a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_51ce34ff441b6a0d89d6cb489eb28d3f.setIcon(icon_435756239e3a919ec30fb3744a9f622a);
+        
+    
+        var popup_44163f8a5589b42ad54b735f89bad836 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5bfbd4c70c9921f1e58c3fc66905a2f1 = $(`<div id="html_5bfbd4c70c9921f1e58c3fc66905a2f1" style="width: 100.0%; height: 100.0%;">AQI: 296.58620689655174 | Risk: High Risk</div>`)[0];
+                popup_44163f8a5589b42ad54b735f89bad836.setContent(html_5bfbd4c70c9921f1e58c3fc66905a2f1);
+            
+        
+
+        marker_51ce34ff441b6a0d89d6cb489eb28d3f.bindPopup(popup_44163f8a5589b42ad54b735f89bad836)
+        ;
+
+        
+    
+    
+            var marker_fdb9bcb188f31860036f1dd9753dab84 = L.marker(
+                [10.91343064, 77.08594729],
+                {
+}
+            ).addTo(map_c84e9c9c2e6ff5f672846862f3693da4);
+        
+    
+            var icon_1ca7b9c6d0ccaf63281293164afa55fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fdb9bcb188f31860036f1dd9753dab84.setIcon(icon_1ca7b9c6d0ccaf63281293164afa55fd);
+        
+    
+        var popup_68c97047be0b68029b7d98b562925432 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bb952da532e6becff9d6311b8c3b78a4 = $(`<div id="html_bb952da532e6becff9d6311b8c3b78a4" style="width: 100.0%; height: 100.0%;">AQI: 308.6744186046512 | Risk: Critical Risk</div>`)[0];
+                popup_68c97047be0b68029b7d98b562925432.setContent(html_bb952da532e6becff9d6311b8c3b78a4);
+            
+        
+
+        marker_fdb9bcb188f31860036f1dd9753dab84.bindPopup(popup_68c97047be0b68029b7d98b562925432)
+        ;
+
+        
+    
+</script>
+</html>

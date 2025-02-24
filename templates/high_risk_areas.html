@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Risk Areas Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        iframe {
+            width: 90%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>High-Risk Areas Visualization</h2>
+    
+    <!-- Embed the generated high_risk_areas.html map -->
+    <iframe src="{{ url_for('static', filename='high_risk_areas.html') }}"></iframe>
+
+    <br>
+    <button onclick="window.location.href='/download_high_risk'">Download High-Risk Areas Map</button>
+    <br><br>
+    <button onclick="window.location.href='/'">Go Back</button>
+</body>
+</html>

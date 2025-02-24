@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cluster Map</title>
+    <style>
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Pollution Cluster Map</h2>
+    <div>
+    <!-- Embed the Cluster Map -->
+    <iframe src="{{ url_for('static', filename='cluster_map.html') }}" width="100%" height="600px"></iframe>
+    </div>
+    <!-- Download Button -->
+    <br><br>
+    <a href="/" class="back-button">🔙 Back</a>
+</body>
+</html>
