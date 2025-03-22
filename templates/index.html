@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Data Dashboard</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+    
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            overflow-y: auto; /* Enables vertical scrolling */
+            scrollbar-width: thin; /* Firefox scrollbar */
+            scrollbar-color:rgb(231, 216, 221) #34495e; /* Thumb and track color */
+        }
+    
+        /* Webkit-based browsers (Chrome, Edge, Safari) */
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+    
+        .sidebar::-webkit-scrollbar-thumb {
+            background:rgb(241, 234, 236);
+            border-radius: 4px;
+        }
+    
+        .sidebar::-webkit-scrollbar-track {
+            background: #34495e;
+        }
+    
+        .sidebar h2 {
+            color:rgb(242, 237, 239);
+        }
+    
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+    
+        .sidebar ul li a, .sidebar button {
+            background: none;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+    
+        .sidebar ul li a:hover, .sidebar button:hover {
+            color: #00c9d3;
+        }
+    
+        .container {
+            margin-left: 270px;
+            padding: 20px;
+            width: calc(100% - 270px);
+        }
+    
+        .form-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: none;
+        }
+    
+        h2 {
+            color: #333;
+        }
+    
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        .iframe-container {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            display: none;
+        }
+        #mapContainer {
+            width: 100%;
+            height: 500px; /* Increased height */
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+    
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #outputContainer {
+            display: none;
+            margin-top: 20px;
+        }
+        img {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 10px auto;
+        }
+        #analyzeButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #analyzeButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        
+
+    </style>
+    
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Main Menu</h2>
+        <ul>
+            <li><button onclick="showSection('aboutSection')">Home</button></li>
+
+            <li>
+                <button class="expandable" onclick="toggleSubMenu('pollutionSubMenu')">Pollution Analysis ▼</button>
+                <ul class="sub-sidebar" id="pollutionSubMenu">
+                    <li><button onclick="showSection('uploadSection')">Upload Data</button></li>
+                    <li><button onclick="showSection('visualizationSection')">Visualize AQI</button></li>
+                    <li><button onclick="showSection('predictionSection')">Predict AQI</button></li>
+                    <li><button onclick="showSection('heatmapSection')">Generate Heatmap</button></li>
+                </ul>
+            </li>
+            
+            <li>
+                <button class="expandable" onclick="toggleSubMenu('clusterSubMenu')">Cluster Analysis ▼</button>
+                <ul class="sub-sidebar" id="clusterSubMenu">
+                    <li><button onclick="showSection('clusterUploadSection')">Upload Data</button></li>
+                    <li><button onclick="showSection('clusterMapSection')">Cluster Map</button></li>
+                    <li><button onclick="showSection('highRiskSection')">High-Risk Areas</button></li>
+                    <li><button onclick="showSection('boxPlotSection')">Box Plot</button></li>
+                </ul>
+            </li>
+
+            <li>
+                <button class="expandable" onclick="toggleSubMenu('forecastSubMenu')">Forecasting Future Trends ▼</button>
+                <ul class="sub-sidebar" id="forecastSubMenu">
+                    
+                    <li><button onclick="showSection('forecastPredictionSection')">Predict AQI Trends</button></li>
+                </ul>
+            </li>
+
+            <li>
+                <button class="expandable" onclick="toggleSubMenu('greenSpaceSubMenu')">Optimization of Green Spaces Areas ▼</button>
+                <ul class="sub-sidebar" id="greenSpaceSubMenu">
+                    <li><button onclick="showSection('greenSpaceAnalysisSection')">Analysis and Source Detection</button></li>
+                    <li><button onclick="showSection('optimalGreenSpaceSection')">Optimal Green Space Locations</button></li>
+                </ul>
+            </li>
+            
+        </ul>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Spatial Optimization for Green Space Integration in High-Pollution Urban Corridors</h1>
+        </header>
+        <div id="aboutSection" class="form-section">
+            <section id="about-project" style="background-color: #f4f4f4; padding: 30px; border-radius: 10px;">
+                <h2 style="color: #333; text-align: center;">About Our Web App</h2>
+                <p style="color: #555; font-size: 18px; line-height: 1.6;">
+                    Urban areas struggle with high pollution and limited green spaces, impacting public health and environmental quality. 
+                    Existing solutions often focus on isolated pollution sources without a comprehensive strategy.
+                </p>
+                <p style="color: #555; font-size: 18px; line-height: 1.6;">
+                    Our project introduces an advanced model that integrates multiple pollution metrics to strategically plan green spaces. 
+                    By leveraging Geographic Information System (GIS) data, we identify optimal locations for green spaces in high-pollution zones to maximize environmental benefits.
+                </p>
+                <p style="color: #555; font-size: 18px; line-height: 1.6;">
+                    Using predictive models, our web app estimates the long-term impact of green spaces on pollution levels. 
+                    Through time-series analysis, it forecasts air quality improvements based on historical and environmental data, helping urban planners make informed decisions.
+                </p>
+            </section>
+        </div>
+        <div id="uploadSection" class="form-section">
+            <h2>Upload AQI Data</h2>
+            <form id="uploadForm">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+            <div id="uploadMessage"></div>
+        </div>
+
+        <div id="clusterUploadSection" class="form-section">
+            <h2>Upload Cluster Analysis Data</h2>
+            <form id="clusterUploadForm">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+            <div id="clusterUploadMessage"></div>
+        </div>
+        
+        <div id="visualizationSection" class="form-section">
+            <h2>Generate AQI Visualization</h2>
+            <form action="/all_aqi_visualization" method="GET">
+                <button type="submit">All AQI Categories</button>
+            </form>
+            <br>
+            <form action="/high_pollution_visualization" method="GET">
+                <button type="submit">High Pollution Areas</button>
+            </form>
+            <div id="errorMessage"></div>
+        </div>
+
+        <div id="predictionSection" class="form-section">
+            <h2>Predict AQI Category</h2>
+            <button onclick="predictAQI()">Predict AQI</button>
+        </div>
+
+        <div id="heatmapSection" class="form-section">
+            <h2>Heatmap Visualization</h2>
+            <button onclick="generateHeatmap()">Generate Heatmap</button>
+            <div class="iframe-container" id="heatmapContainer">
+                <iframe id="heatmapFrame"></iframe>
+            </div>
+            <br>
+            <br>
+            <button id="downloadButton" onclick="downloadHeatmap()">Download Heatmap Data</button>
+        </div>
+
+        <div id="clusterMapSection" class="form-section">
+            <h2>Cluster Map Visualization</h2>
+            <button onclick="loadClusterMap()">View Cluster Map</button>
+            <br>
+            <br>
+            <a href="{{ url_for('download_cluster_map') }}" download>
+                <button>Download Cluster Map</button>
+            </a>
+        </div>
+
+
+        <div id="highRiskSection" class="form-section">
+            <h2>High-Risk Areas Analysis</h2>
+            <button onclick="loadHighRiskAreas()">Analyze High-Risk Areas</button>
+        </div>
+
+        <div id="boxPlotSection" class="form-section">
+            <h2>Box Plot for Clustered Data</h2>
+            <button onclick="loadBoxPlot()">Generate Box Plot</button>
+        </div>
+
+        <!-- Upload Forecast Data Section -->
+     
+        <div id="forecastPredictionSection" class="form-section" style="display: none;">
+            <h2>Upload AQI Data</h2>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit" class="btn btn-success">Predict</button>
+            </form>
+        
+            <h2>Air Quality Index (AQI) Dashboard</h2>
+        
+            <button class="btn btn-success" onclick="window.location.href='/aqi-trends';">View AQI Trends</button>
+            <button class="btn btn-success" onclick="window.location.href='/aqi-predictions';">Predicted AQI (Next 5 Days)</button>
+        </div>
+        
+        
+        
+        <!-- Predict AQI Trends Section -->
+        <div id="forecastPredictionSection" class="form-section" style="display: none;">
+            <h2>Predict AQI Trends</h2>
+            <button onclick="predictFutureAQI()">Generate Forecast</button>
+            <p id="forecastResult"></p>
+        </div>
+
+        <div id="greenSpaceAnalysisSection" class="form-section">
+            <h2>Upload Pollution Data</h2>
+            <form action="/analyze" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit">Analyze</button>
+            </form>
+        </div>
+    
+        <div id="optimalGreenSpaceSection" class="form-section">
+            <h2>Optimal Green Space Finder</h2>
+            <button id="findButton" onclick="findOptimalAreas()">Find Optimal Areas</button>
+            <p id="status"></p>
+            <div class="iframe-container" id="optimalAreaContainer" style="display:none;">
+                <iframe id="optimalAreaFrame"></iframe>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        
+        // Ensure the About Section is displayed by default
+        window.onload = function () {
+            showSection('aboutSection');
+        };
+
+        function toggleSubMenu() {
+            const subMenu = document.getElementById('pollutionSubMenu');
+            subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function generateHeatmap() {
+            const iframe = document.getElementById('heatmapFrame');
+            iframe.src = "/heatmap_visualization"; 
+            document.getElementById('heatmapContainer').style.display = 'block';
+        }
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/upload_aqi_data', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageBox = document.getElementById('uploadMessage');
+                messageBox.textContent = data.message;
+                messageBox.style.display = 'block';
+                messageBox.style.color = 'black';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                displayError('Failed to upload file.');
+            });
+        });
+
+
+        document.getElementById('clusterUploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/upload_aqi_data', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageBox = document.getElementById('clusterUploadMessage');
+                messageBox.textContent = data.message;
+                messageBox.style.display = 'block';
+                messageBox.style.color = 'black';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                displayError('Failed to upload file.');
+            });
+        });
+
+
+        function predictAQI() {
+            const data = {
+                values: [[60, 90, 40, 12, 1.2, 30]]
+            };
+
+            fetch('/predict_aqi', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => alert('Predicted AQI Category: ' + result['Predicted AQI Category']))
+            .catch(error => displayError('Error predicting AQI: ' + error));
+        }
+        
+        function downloadHeatmap() {
+            const link = document.createElement('a');
+            link.href = "/static/high_pollution_heatmap.html";  // Ensure the file is stored in static
+            link.download = "high_pollution_heatmap.html";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function displayError(message) {
+            const errorBox = document.getElementById('errorMessage');
+            errorBox.textContent = message;
+            errorBox.style.display = 'block';
+        }
+        function loadClusterMap() {
+            window.location.href = "/cluster_map";
+        }
+
+        function loadHighRiskAreas() {
+            window.location.href = "/high_risk_areas";
+        }
+
+        function loadBoxPlot() {
+            window.location.href = "/box_plot";
+        }
+
+        function uploadForecastData(event) {
+            event.preventDefault();
+            const formData = new FormData(document.getElementById('forecastUploadForm'));
+        
+            fetch('/upload_forecast_data', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('forecastUploadMessage').textContent = data.message;
+                if (data.filename) {
+                    localStorage.setItem('forecastFilename', data.filename);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+        
+        function predictFutureAQI() {
+            const filename = localStorage.getItem('forecastFilename');
+            if (!filename) {
+                alert('Please upload forecast data first.');
+                return;
+            }
+        
+            fetch('/predict_future_aqi', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ filename: filename })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.forecast) {
+                    document.getElementById('forecastResult').textContent = "Predicted AQI: " + data.forecast.join(', ');
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function findOptimalAreas() {
+            let button = document.getElementById("findButton");
+            let iframe = document.getElementById("optimalAreaFrame");
+            let status = document.getElementById("status");
+        
+            button.innerText = "Please wait...";
+            button.disabled = true;
+            status.innerText = "Finding optimal locations...";
+            status.style.color = "black";
+        
+            fetch('/find_optimal_locations', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                status.innerText = "Optimal locations found!";
+                iframe.src = data.map_path;
+                document.getElementById("optimalAreaContainer").style.display = "block";
+                button.innerText = "Find Optimal Areas";
+                button.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                status.innerText = "Error finding locations!";
+                status.style.color = "black";
+                button.innerText = "Find Optimal Areas";
+                button.disabled = false;
+            });
+        }
+        
+
+        function runAnalysis() {
+            let button = document.getElementById("analyzeButton");
+            let status = document.getElementById("status");
+            let outputContainer = document.getElementById("outputContainer");
+
+            // Disable button and show loading status
+            button.innerText = "Analyzing...";
+            button.disabled = true;
+            status.innerText = "Performing spatial analysis, please wait...";
+
+            fetch('/analyze', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                // Update output with analysis results
+                document.getElementById("moranImg").src = data.moran_path;
+                document.getElementById("hotspotImg").src = data.hotspot_path;
+                outputContainer.style.display = "block";
+
+                // Restore button and status
+                button.innerText = "Run Analysis";
+                button.disabled = false;
+                status.innerText = "Analysis complete!";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                status.innerText = "Error performing analysis!";
+                button.innerText = "Run Analysis";
+                button.disabled = false;
+            });
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+

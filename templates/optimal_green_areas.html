@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Green Space Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        iframe {
+            width: 80%;
+            height: 500px;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find Optimal Green Space Locations</h1>
+    <form action="/find_optimal_locations" method="POST">
+        <button type="submit">Find Optimal Locations</button>
+    </form>
+
+    {% if map_path %}
+    <h2>Optimal Locations Map</h2>
+    <iframe src="{{ map_path }}"></iframe>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Plot - AQI Clusters</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+        }
+
+        .plot-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 85%;
+            max-width: 850px;
+            margin: 20px auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plot-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 7px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        img {
+            width: 100%;
+            max-width: 750px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 3px solid #fff;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #ff4f4f;
+            transform: scale(1.05);
+        }
+
+        .btn.download {
+            background: #2ecc71;
+        }
+
+        .btn.download:hover {
+            background: #27ae60;
+        }
+
+        .btn.back {
+            background: #3498db;
+        }
+
+        .btn.back:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Box Plot - AQI Levels in Different Pollution Clusters</h2>
+
+    <div class="plot-container">
+        <img src="{{ url_for('static', filename='box_plot.png') }}" alt="Box Plot">
+    </div>
+
+    <div class="button-container">
+        <a href="/box_plot" class="btn">Generate New Box Plot</a>
+        <a href="{{ url_for('static', filename='box_plot.png') }}" download class="btn download">Download Box Plot</a>
+        <a href="/" class="btn back">Go Back</a>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Plot - AQI Clusters</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+        }
+
+        .plot-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 85%;
+            max-width: 850px;
+            margin: 20px auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plot-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 7px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        img {
+            width: 100%;
+            max-width: 750px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 3px solid #fff;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #ff4f4f;
+            transform: scale(1.05);
+        }
+
+        .btn.download {
+            background: #2ecc71;
+        }
+
+        .btn.download:hover {
+            background: #27ae60;
+        }
+
+        .btn.back {
+            background: #3498db;
+        }
+
+        .btn.back:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Box Plot - AQI Levels in Different Pollution Clusters</h2>
+
+    <div class="plot-container">
+        <img src="{{ url_for('static', filename='box_plot.png') }}" alt="Box Plot">
+    </div>
+
+    <div class="button-container">
+        <a href="/box_plot" class="btn">Generate New Box Plot</a>
+        <a href="{{ url_for('static', filename='box_plot.png') }}" download class="btn download">Download Box Plot</a>
+        <a href="/" class="btn back">Go Back</a>
+    </div>
+
+</body>
+</html>

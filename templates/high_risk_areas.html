@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Risk Areas Map</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        .map-container {
+            width: 92%;
+            max-width: 1100px;
+            height: 620px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #fff;
+            border-radius: 12px;
+        }
+
+        .map-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 7px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #ff4f4f;
+            transform: scale(1.05);
+        }
+
+        .btn.download {
+            background: #2ecc71;
+        }
+
+        .btn.download:hover {
+            background: #27ae60;
+        }
+
+        .btn.back {
+            background: #3498db;
+        }
+
+        .btn.back:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>High-Risk Areas Visualization</h2>
+
+    <div class="map-container">
+        <iframe src="{{ url_for('static', filename='high_risk_areas.html') }}"></iframe>
+    </div>
+
+    <div class="button-container">
+        <a href="/download_high_risk" class="btn download">Download High-Risk Areas Map</a>
+        <a href="/" class="btn back">Go Back</a>
+    </div>
+
+</body>
+</html>

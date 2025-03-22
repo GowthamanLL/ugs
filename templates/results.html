@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollution Analysis Results</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 850px;
+            margin: 20px auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        img {
+            width: 100%;
+            max-width: 750px;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #ff4f4f;
+            transform: scale(1.05);
+        }
+
+        /* Button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pollution Analysis Results</h1>
+
+    <div class="result-card">
+        <h2>Moran’s I Test for Spatial Autocorrelation</h2>
+        <img src="{{ url_for('static', filename='morans_i.png') }}" alt="Moran's I Test">
+    </div>
+
+    <div class="result-card">
+        <h2>Getis-Ord Gi* Hotspot Analysis</h2>
+        <img src="{{ url_for('static', filename='hotspot.png') }}" alt="Hotspot Analysis">
+    </div>
+
+    <div class="result-card">
+        <h2>Pollution Clusters using K-Means</h2>
+        <img src="{{ url_for('static', filename='clusters.png') }}" alt="K-Means Clustering">
+    </div>
+
+    <!-- Download Buttons -->
+    <div class="button-container">
+        <a href="{{ url_for('download_file', filename='pollution_sources_identified.csv') }}" class="btn">Download Pollution Data</a>
+        <a href="{{ url_for('download_file', filename='optimal_green_space_sites.csv') }}" class="btn">Download Optimal Sites Data</a>
+    </div>
+
+    <br><br>
+    <a href="/" class="btn">Back</a>
+
+</body>
+</html>

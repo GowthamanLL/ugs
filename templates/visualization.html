@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Visualization</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 7px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-container img {
+            width: 100%;
+            max-height: 500px;
+            border: 3px solid #fff;
+            border-radius: 8px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            background: #ff6b6b;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #ff4f4f;
+            transform: scale(1.05);
+        }
+
+        .btn.back {
+            background: #3498db;
+        }
+
+        .btn.back:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>AQI Visualization</h2>
+
+    <div class="image-container">
+        <img src="{{ img_file }}" alt="AQI Visualization">
+    </div>
+
+    <div class="button-container">
+        <a href="/" class="btn back">🔙 Back</a>
+    </div>
+
+</body>
+</html>

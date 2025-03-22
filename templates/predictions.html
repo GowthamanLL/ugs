@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Predictions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-size: 18px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #dfe6e9;
+            cursor: pointer;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #df0050;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        a:hover {
+            background: #00c9d3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Predicted AQI for the Next 5 Days</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Predicted AQI</th>
+        </tr>
+        {% for prediction in predictions %}
+        <tr>
+            <td>{{ prediction.date }}</td>
+            <td>{{ prediction.aqi }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Back to Dashboard</a>
+</body>
+</html>
